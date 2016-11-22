@@ -2,13 +2,15 @@ class ApplicationController < ActionController::API
   include ActionController::Serialization
   include ActionController::HttpAuthentication::Token::ControllerMethods
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  # rescue_from ActionController::RoutingError, with: :not_found
   # before_action :authenticate_user
-
-  private
 
   def not_found
     return api_error(404, errors: 'Not found')
   end
+
+  private
+
 
   def authenticate_user
     authenticate_token || reject_token
@@ -20,13 +22,12 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def reject_token(realm = "Application")
-    # self.headers["WWW-Authenticate"] = %(Token realm="#{realm.gsub(/"/, "")}")
+  def reject_token
     render json: { message: 'No soup for you', status: 401 }
   end
 
   def api_error(status, errors: [])
-    render json: { errors: errors, status: status }
+    render json: { errors: errors, status: status }, :status => status
   end
 
 end

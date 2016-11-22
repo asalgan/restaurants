@@ -7,7 +7,7 @@ class MenuItemsController < ApplicationController
 
   def show
     menu_item = @restaurant.menu_items.find(params[:id].to_i)
-    render json: menu_item
+    render json: menu_item, :status => 200
   end
 
   private
