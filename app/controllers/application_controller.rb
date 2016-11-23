@@ -2,7 +2,6 @@ class ApplicationController < ActionController::API
   include ActionController::Serialization
   include ActionController::HttpAuthentication::Token::ControllerMethods
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-  # rescue_from ActionController::RoutingError, with: :not_found
   before_action :authenticate_user
 
   def not_found

@@ -1,28 +1,42 @@
-== README
+I started by creating a Rails::API application since much of the functionality that come with a complete Rails application is unnecessary.
+This was done in order to make it more lightweight and a bit faster than a standard, full-function Rails application.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You can start by running the migrations and seeding the database with some restaurant data I created.
+The seeds file contains a new User that's created with an api_key that's generated via SecureRandom, you can use that key to gain access to the data.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+I'm also the 'active_model_serializers' gem.
+
+Endpoints:
+
+restaurants#index
+/restaurants
+
+restaurants#show
+/restaurants
+
+menu_items#index
+/menu_items
+
+menu_items#show
+/menu_item
+
+
+Examples:
+
+## Retrieve all restaurants
+curl --include -H "Authorization: Token token=XXX" -X GET http://127.0.0.1:3000/restaurants
+
+## Retrieve a specific restaurant
+curl --include -H "Authorization: Token token=XXX" -d "restaurant_id=XXX" -X GET http://127.0.0.1:3000/restaurant
+
+
+## Retrieve all menu items belonging to a restaurant
+curl --include -H "Authorization: Token token=XXX" -d "restaurant_id=XXX" -X GET http://127.0.0.1:3000/menu_items
+
+## Retrieve a specific menu item belonging to a restaurant
+curl --include -H "Authorization: Token token=XXX" -d "restaurant_id=XXX" -d "id=XXX" -X GET http://127.0.0.1:3000/menu_item
+
+
+In a more complete version of the API, I would include caching of data for improved load times which you can do directly with ActiveModel::Serializer, rate limiting and throttling, possibly with a gem I found called rack-attack that would allow me to whitelist, blacklist, throttle, and track.
+I would implement versioning to the API as well.

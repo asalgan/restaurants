@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '*path', to: "application#not_found"
 
 
-  ## curl -H "Authorization: Token token=qwEC2L3QDq+z2scknRnlPSiOiDMOTkwKYY5pxh4N9k0=" http://127.0.0.1:3000/restaurants.json
+  ## curl -H "Authorization: Token token=1Kbr4GuHhVsYBqmHsXkp5SCwz48GFc8W" http://127.0.0.1:3000/restaurants.json
 
   ## RESTAURANTS
   ## curl -X GET http://127.0.0.1:3000/restaurants
