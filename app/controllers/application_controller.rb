@@ -10,7 +10,6 @@ class ApplicationController < ActionController::API
 
   private
 
-
   def authenticate_user
     authenticate_token || reject_token
   end
