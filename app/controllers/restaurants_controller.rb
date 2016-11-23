@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
 
   def index
-    paginate json: Restaurant.all, per_page: 1, :status => 200
+    paginate json: Restaurant.all, per_page: 2, :status => 200
   end
 
   def show

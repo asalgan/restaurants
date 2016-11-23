@@ -2,7 +2,7 @@ class MenuItemsController < ApplicationController
   before_action :get_restaurant
 
   def index
-    paginate json: @restaurant.menu_items, per_page: 1
+    paginate json: @restaurant.menu_items, per_page: 1, :status => 200
   end
 
   def show
