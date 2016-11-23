@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :menu_item do
-    restaurant nil
+    restaurant
     name "MyString"
     description "MyText"
     category 1

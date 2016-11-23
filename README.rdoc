@@ -2,10 +2,10 @@ I started by creating a Rails::API application since much of the functionality t
 This was done in order to make it more lightweight and a bit faster than a standard, full-function Rails application.
 
 You can start by running the migrations and seeding the database with some restaurant data I created.
-The seeds file contains a new User that's created with an api_key that's generated via SecureRandom, you can use that key to gain access to the data.
+The seeds file contains a new User that's created with an api_key that's generated via SecureRandom in order to gain access to the data.
 
 
-I'm also using the 'active_model_serializers' gem
+I'm also using the 'active_model_serializers' gem to help format JSON responses and the 'api-pagination' gem to allow pagination to occur in the headers.
 
 *Endpoints:*
 

@@ -1,4 +1,4 @@
-User.create(api_key: SecureRandom.base(24))
+User.create(api_key: SecureRandom.base64(24))
 # Menu item categories: %w(entree appetizer dessert beverage side)
 
 restaurant1 = Restaurant.create(name: "Thai Tanic", description: "Unsinkable Thai", rating: 3.4, address: "3829 Western Avenue", city: "Chicago", state: "IL", zip: 60657)

@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :user do
-    name "MyString"
-    email "MyString"
+    api_key SecureRandom.base64(24)
   end
 end
