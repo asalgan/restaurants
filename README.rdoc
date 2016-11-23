@@ -7,7 +7,7 @@ The seeds file contains a new User that's created with an api_key that's generat
 
 I'm also using the 'active_model_serializers' gem
 
-####Endpoints:####
+####Endpoints:
 ------
 
 restaurants#index
@@ -27,7 +27,7 @@ menu_items#show
 /menu_item
 
 
-####Examples:####
+####Examples:
 ------
 
 ## Retrieve all restaurants
