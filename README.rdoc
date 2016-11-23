@@ -5,36 +5,44 @@ You can start by running the migrations and seeding the database with some resta
 The seeds file contains a new User that's created with an api_key that's generated via SecureRandom, you can use that key to gain access to the data.
 
 
-I'm also the 'active_model_serializers' gem.
+I'm also using the 'active_model_serializers' gem
 
 Endpoints:
 
 restaurants#index
+
 /restaurants
 
 restaurants#show
+
 /restaurants
 
 menu_items#index
+
 /menu_items
 
 menu_items#show
+
 /menu_item
 
 
 Examples:
 
 ## Retrieve all restaurants
+
 curl --include -H "Authorization: Token token=XXX" -X GET http://127.0.0.1:3000/restaurants
 
 ## Retrieve a specific restaurant
+
 curl --include -H "Authorization: Token token=XXX" -d "restaurant_id=XXX" -X GET http://127.0.0.1:3000/restaurant
 
 
 ## Retrieve all menu items belonging to a restaurant
+
 curl --include -H "Authorization: Token token=XXX" -d "restaurant_id=XXX" -X GET http://127.0.0.1:3000/menu_items
 
 ## Retrieve a specific menu item belonging to a restaurant
+
 curl --include -H "Authorization: Token token=XXX" -d "restaurant_id=XXX" -d "id=XXX" -X GET http://127.0.0.1:3000/menu_item
 
 
