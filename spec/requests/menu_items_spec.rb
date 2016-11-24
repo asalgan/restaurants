@@ -4,12 +4,24 @@ RSpec.describe "Menu Items", type: :request do
 
   describe "GET /menu_items" do
 
-    it "should have a 200 response when an API key and restaurant ID are present" do
+    it "should have a 200 response when an API key, restaurant ID, and menu item ID are present" do
       @user = FactoryGirl.create(:user)
       @restaurant = FactoryGirl.create(:restaurant)
+      @menu_item = FactoryGirl.create(:menu_item, restaurant: @restaurant)
       get menu_items_path, { restaurant_id: @restaurant.id }, { 'Authorization' => "Token token=#{ @user.api_key }"  }
       expect(response.content_type).to eq("application/json")
       expect(response).to have_http_status(200)
+    end
+
+    it "should have menu items data when API key, restaurant ID, and menu item ID are present" do
+      @user = FactoryGirl.create(:user)
+      @restaurant = FactoryGirl.create(:restaurant)
+      @menu_item = FactoryGirl.create(:menu_item, restaurant: @restaurant)
+      get menu_items_path, { restaurant_id: @restaurant.id }, { 'Authorization' => "Token token=#{ @user.api_key }" }
+      attributes = JSON.parse(response.body)["data"][0]["attributes"]
+      expect(attributes["name"]).to eq @menu_item.name
+      expect(attributes["description"]).to eq @menu_item.description
+      expect(attributes["category"]).to eq @menu_item.category
     end
 
     it "should have a 401 response when no API key is present" do
@@ -46,6 +58,17 @@ RSpec.describe "Menu Items", type: :request do
       get menu_item_path, { restaurant_id: @restaurant.id, id: @menu_item.id }, { 'Authorization' => "Token token=#{ @user.api_key }",   }
       expect(response.content_type).to eq("application/json")
       expect(response).to have_http_status(200)
+    end
+
+    it "should have menu item data when API key, restaurant ID, and menu item ID are present" do
+      @user = FactoryGirl.create(:user)
+      @restaurant = FactoryGirl.create(:restaurant)
+      @menu_item = FactoryGirl.create(:menu_item, restaurant: @restaurant)
+      get menu_items_path, { restaurant_id: @restaurant.id }, { 'Authorization' => "Token token=#{ @user.api_key }" }
+      attributes = JSON.parse(response.body)["data"][0]["attributes"]
+      expect(attributes["name"]).to eq @menu_item.name
+      expect(attributes["description"]).to eq @menu_item.description
+      expect(attributes["category"]).to eq @menu_item.category
     end
 
     it "should have a 401 response when no API key is present" do
