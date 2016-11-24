@@ -22,6 +22,7 @@ RSpec.describe "Menu Items", type: :request do
       expect(attributes["name"]).to eq @menu_item.name
       expect(attributes["description"]).to eq @menu_item.description
       expect(attributes["category"]).to eq @menu_item.category
+      expect(attributes["tags"]).to eq @menu_item.tags
     end
 
     it "should have a 401 response when no API key is present" do
@@ -69,6 +70,7 @@ RSpec.describe "Menu Items", type: :request do
       expect(attributes["name"]).to eq @menu_item.name
       expect(attributes["description"]).to eq @menu_item.description
       expect(attributes["category"]).to eq @menu_item.category
+      expect(attributes["tags"]).to eq @menu_item.tags
     end
 
     it "should have a 401 response when no API key is present" do
